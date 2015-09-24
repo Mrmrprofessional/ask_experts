@@ -1,11 +1,11 @@
 <div ng-show="questions.length">
   <h1>Questions that have been asked:</h1>
   <label>Show only unanswered questions:
-    <input  type="checkbox" ng-model="filterAnswers" ng-false-value="" value="true" id="filterAnswers">
+    <input  type="checkbox" ng-model="filterAnswers" ng-false-value="" ng-true-value="false" id="filterAnswers">
   </label>
   <ul>
     <li ng-repeat="item in filtered = ( questions | filter:filterAnswers )">
-      <a ui-sref="questions.answers({ questionId: item.id })">{{ item.question }}</a>
+      <a ui-sref="questions.answers({ questionId: item.id })">{{ item.text }}</a>
     </li>
   </ul>
   <!-- <ul ng-show="filterAnswers">

@@ -2,13 +2,13 @@
   <h2>Answers for {{ question.question }}</h2>
   <ul>
     <li ng-repeat="item in question.answers">
-      {{ item.answer }}
+      <a ng-click="upVote(item)">^</a>{{item.votes}}<a ng-click="downVote(item)">v</a>{{ item.text }}
     </li>
   </ul>
 </div>
 
 <div>
-  <h2>Add answer to "{{ question.question }}"</h2>
+  <h2>Add answer to {{ question.text }}</h2>
   <form ng-submit="addAnswer()" class="form-inline" role="form">
     <div class="form-group">
       <input type="text" ng-model="answer" class="form-control" placeholder="Enter Answer">
