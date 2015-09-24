@@ -1,13 +1,9 @@
 var ocarinaExperts = angular.module('ocarinaExperts', ['ui.router']);
 
 ocarinaExperts.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider.state('home', {
-    url: "",
-    templateUrl: 'partials/home.html'
-  });
 
   $stateProvider.state('questions',  {
-    url: "/questions",
+    url: "",
     templateUrl: 'partials/questions.html',
     controller: 'QuestionsCtrl'
   });

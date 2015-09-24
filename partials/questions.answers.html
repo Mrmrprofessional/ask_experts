@@ -1,18 +1,32 @@
-<div ng-show="question.answers.length">
-  <h2>Answers for {{ question.question }}</h2>
-  <ul>
-    <li ng-repeat="item in question.answers">
-      <a ng-click="upVote(item)">^</a>{{item.votes}}<a ng-click="downVote(item)">v</a>{{ item.text }}
-    </li>
-  </ul>
-</div>
-
+<h2 class="text-center">Answers</h2>
+<div class="well">
 <div>
-  <h2>Add answer to {{ question.text }}</h2>
-  <form ng-submit="addAnswer()" class="form-inline" role="form">
+  {{question.text}}
+</div>
+<br>
+<div>
+  <form ng-submit="addAnswer()" class=" text-center" role="form">
     <div class="form-group">
-      <input type="text" ng-model="answer" class="form-control" placeholder="Enter Answer">
+      <input type="text" ng-model="answer" class="form-control" placeholder="Submit Answer">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
   </form>
+</div>
+<div ng-show="question.answers.length">
+  <hr>
+    <div ng-repeat="item in question.answers  |  orderBy: '-votes'">
+      <a ng-click="upVote(item)"><i class="fa fa-arrow-up"></i></a>  {{item.votes}}  <a ng-click="downVote(item)"><i class="fa fa-arrow-down"></i></a>
+      <p>{{ item.text }}</p> <a ng-click="commentBox = !commentBox"> Add comment</a>
+    <div ng-show="commentBox">
+      <form ng-submit="addComment(item, comment)" role="form">
+        <div class="form-group">
+          <input type="text" ng-model="comment" class="form-control" placeholder="Comment here"></p>
+        </div>
+      </form>
+    </div>
+    <br>
+    <div class="panel text-right"  ng-repeat="response in item.comments track by $index">
+      {{ response }}
+    </div>
+  </div>
+</div>
 </div>
